@@ -40,7 +40,7 @@ library(tidyverse)
 library(RSQLite)
 ```
 
-# Connect to the provided SQLite Database
+## Connect to the provided SQLite Database
 
 ```{r echo=TRUE}
 conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
@@ -48,7 +48,7 @@ conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
 
 # Part A: Introduction
 
-In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries. All findings will be presented in a Quarto Notebook.
+In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries.
 
 # Core Queries 
 
@@ -140,7 +140,7 @@ result <- dbGetQuery(conn, query)
 knitr::kable(result)
 ```
 
-# SQL Concept Demonstration
+# SQL Concepts Demonstration
 
 ### **1. SELECT with LIKE and OR: Find developers with specialization as Programmer or Writer.**
 
@@ -162,7 +162,7 @@ knitr::kable(result)
 
 ```
 
-### **2. SELECT with DISTINCT and ORDER BY: List distinct asset types.**
+### **2. SELECT with DISTINCT and ORDER BY: List of distinct asset types ordered alphabetically.**
 
 ```{r echo=FALSE}
 
