@@ -46,19 +46,37 @@ library(RSQLite)
 conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
 ```
 
-# List tables in the database
+# Part A: Introduction
 
-Initial view of the content in the database:
+In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries. All findings will be presented in a Quarto Notebook.
 
-```{r}
-dbListTables(conn)
-```
+# Core Queries 
 
-# Query 1: Retrieve the first 10 rows from the 'projects' table
+# Query 1: Total Budget and Project Count per Country
 
-```{r}
-result <- dbGetQuery(conn, "SELECT * FROM projects LIMIT 10")  
+```{r echo=FALSE}
+
+# SQL query 
+query <- "
+SELECT 
+  c.CustomerCountry, 
+  SUM(p.Budget) AS TotalBudget, 
+  COUNT(p.ProjectID) AS ProjectCount
+FROM 
+  Projects p
+JOIN 
+  Customers c ON p.CustomerID = c.CustomerID
+GROUP BY 
+  c.CustomerCountry
+ORDER BY 
+  TotalBudget DESC;
+"
+
+# Executing the query and assigning results to variable
+result <- dbGetQuery(conn, query)
+
 knitr::kable(result)
+
 ```
 
 # Query 1: Retrieve the first 10 rows from the 'customers' table
@@ -75,23 +93,7 @@ result <- dbGetQuery(conn, "SELECT * FROM developers LIMIT 10")
 knitr::kable(result)
 ```
 
-# Query 1: Retrieve the first 10 rows from the 'assets' table
-
-```{r}
-result <- dbGetQuery(conn, "SELECT * FROM assets LIMIT 10")  
-knitr::kable(result)
-```
-
-# Query 1: Retrieve the first 10 rows from the 'timelines' table
-
-```{r}
-result <- dbGetQuery(conn, "SELECT * FROM timelines LIMIT 10")  
-knitr::kable(result)
-```
-
-# 
-
-# Don't forget to disconnect from the database
+# Disconnect from the database
 
 ```{r}
 dbDisconnect(conn)

@@ -1,9 +1,17 @@
 ---
-title: "About"
+title: "References"
 ---
 
-About this site
+-   Data Carpentry. (2023). SQL databases and R. Data Analysis and Visualisation in R for Ecologists. Available at: <https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html> (Accessed: 7 January 2024)
 
-```{r}
-1 + 1
-```
+-   Wickham, H. (n.d.). RSQLite. Available at: <https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html> (Accessed: 7 January 2024)
+
+-   SQLite Viewer Web App. (n.d.). SQLite Viewer Web: A free, web-based SQLite Explorer. Available at: <https://sqliteviewer.app/#/ICA_2023.sqlite/table/AssetsDevelopers/> (Accessed: 7 January 2024).
+
+-   McGuinness, N. (2023). 1_Local_SQLite.R. In 2023_MSC_DataAnalytics_SQL. Available at: <https://github.com/nmcguinness/2023_MSC_DataAnalytics_SQL/blob/main/1_Local_SQLite.R> (Accessed: 7 January 2024)​
+
+-   Bevans, R. (2023). Simple Linear Regression \| An Easy Introduction & Examples. Scribbr. Available at: <https://www.scribbr.com/statistics/simple-linear-regression/> (Accessed: 7 January 2024)
+
+-   McGuinness, N. (2023). 2023_MSC_DataAnalytics_Shiny_Quarto_Demo. GitHub. Available at: <https://github.com/nmcguinness/2023_MSC_DataAnalytics_Shiny_Quarto_Demo> (Accessed: 7 January 2024).
+
+-   McGuinness, N. (2023). 2023_MSC_DataAnalytics_Quarto_Demo. GitHub. Available at: <https://github.com/nmcguinness/2023_MSC_DataAnalytics_Quarto_Demo/tree/main> (Accessed: 7 January 2024).

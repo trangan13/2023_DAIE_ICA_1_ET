@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">References</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -141,25 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#clear-console-on-each-execute" id="toc-clear-console-on-each-execute" class="nav-link active" data-scroll-target="#clear-console-on-each-execute">Clear console on each execute</a></li>
-  <li><a href="#download-and-load-libraries" id="toc-download-and-load-libraries" class="nav-link" data-scroll-target="#download-and-load-libraries">Download and load libraries</a></li>
-  <li><a href="#connect-to-the-provided-sqlite-database" id="toc-connect-to-the-provided-sqlite-database" class="nav-link" data-scroll-target="#connect-to-the-provided-sqlite-database">Connect to the provided SQLite Database</a></li>
-  <li><a href="#list-tables-in-the-database" id="toc-list-tables-in-the-database" class="nav-link" data-scroll-target="#list-tables-in-the-database">List tables in the database</a></li>
-  <li><a href="#query-1-retrieve-the-first-10-rows-from-the-projects-table" id="toc-query-1-retrieve-the-first-10-rows-from-the-projects-table" class="nav-link" data-scroll-target="#query-1-retrieve-the-first-10-rows-from-the-projects-table">Query 1: Retrieve the first 10 rows from the ‘projects’ table</a></li>
-  <li><a href="#query-1-retrieve-the-first-10-rows-from-the-customers-table" id="toc-query-1-retrieve-the-first-10-rows-from-the-customers-table" class="nav-link" data-scroll-target="#query-1-retrieve-the-first-10-rows-from-the-customers-table">Query 1: Retrieve the first 10 rows from the ‘customers’ table</a></li>
-  <li><a href="#query-1-retrieve-the-first-10-rows-from-the-developers-table" id="toc-query-1-retrieve-the-first-10-rows-from-the-developers-table" class="nav-link" data-scroll-target="#query-1-retrieve-the-first-10-rows-from-the-developers-table">Query 1: Retrieve the first 10 rows from the ‘developers’ table</a></li>
-  <li><a href="#query-1-retrieve-the-first-10-rows-from-the-assets-table" id="toc-query-1-retrieve-the-first-10-rows-from-the-assets-table" class="nav-link" data-scroll-target="#query-1-retrieve-the-first-10-rows-from-the-assets-table">Query 1: Retrieve the first 10 rows from the ‘assets’ table</a></li>
-  <li><a href="#query-1-retrieve-the-first-10-rows-from-the-timelines-table" id="toc-query-1-retrieve-the-first-10-rows-from-the-timelines-table" class="nav-link" data-scroll-target="#query-1-retrieve-the-first-10-rows-from-the-timelines-table">Query 1: Retrieve the first 10 rows from the ‘timelines’ table</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  <li><a href="#dont-forget-to-disconnect-from-the-database" id="toc-dont-forget-to-disconnect-from-the-database" class="nav-link" data-scroll-target="#dont-forget-to-disconnect-from-the-database">Don’t forget to disconnect from the database</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -201,117 +183,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"ICA_2023.sqlite"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="list-tables-in-the-database" class="level1">
-<h1>List tables in the database</h1>
-<p>Initial view of the content in the database:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Assets"            "AssetsDevelopers"  "Customers"        
-[4] "Developers"        "ProjectDevelopers" "Projects"         
-[7] "Timelines"        </code></pre>
-</div>
-</div>
+<section id="part-a-introduction" class="level1">
+<h1>Part A: Introduction</h1>
+<p>In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries. All findings will be presented in a Quarto Notebook.</p>
 </section>
-<section id="query-1-retrieve-the-first-10-rows-from-the-projects-table" class="level1">
-<h1>Query 1: Retrieve the first 10 rows from the ‘projects’ table</h1>
+<section id="core-queries" class="level1">
+<h1>Core Queries</h1>
+</section>
+<section id="query-1-total-budget-and-project-count-per-country" class="level1">
+<h1>Query 1: Total Budget and Project Count per Country</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM projects LIMIT 10"</span>)  </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">  c.CustomerCountry, </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">  SUM(p.Budget) AS TotalBudget, </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">  COUNT(p.ProjectID) AS ProjectCount</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">FROM </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">  Projects p</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">  Customers c ON p.CustomerID = c.CustomerID</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">  c.CustomerCountry</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">  TotalBudget DESC;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Executing the query and assigning results to variable</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, query)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 15%">
-<col style="width: 13%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: left;">ProjectName</th>
-<th style="text-align: left;">StartDate</th>
-<th style="text-align: left;">EndDate</th>
-<th style="text-align: right;">Budget</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: right;">CustomerID</th>
+<th style="text-align: left;">CustomerCountry</th>
+<th style="text-align: right;">TotalBudget</th>
+<th style="text-align: right;">ProjectCount</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">650000</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
+<td style="text-align: left;">UK</td>
+<td style="text-align: right;">550000</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">105</td>
-<td style="text-align: left;">Ocean Odyssey</td>
-<td style="text-align: left;">2023-03-01</td>
-<td style="text-align: left;">2024-06-30</td>
-<td style="text-align: right;">300000</td>
-<td style="text-align: left;">In Progress</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">106</td>
-<td style="text-align: left;">Desert Survival</td>
-<td style="text-align: left;">2024-07-01</td>
-<td style="text-align: left;">2024-12-31</td>
-<td style="text-align: right;">350000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">107</td>
-<td style="text-align: left;">Frozen Frontier</td>
-<td style="text-align: left;">2025-01-01</td>
-<td style="text-align: left;">2025-06-30</td>
+<td style="text-align: left;">Netherlands</td>
 <td style="text-align: right;">400000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">108</td>
-<td style="text-align: left;">Cybernetic Dreams</td>
-<td style="text-align: left;">2025-07-01</td>
-<td style="text-align: left;">2025-12-31</td>
-<td style="text-align: right;">450000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: left;">Italy</td>
+<td style="text-align: right;">250000</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">France</td>
+<td style="text-align: right;">200000</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Germany</td>
+<td style="text-align: right;">150000</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -321,8 +261,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="query-1-retrieve-the-first-10-rows-from-the-customers-table" class="level1">
 <h1>Query 1: Retrieve the first 10 rows from the ‘customers’ table</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM customers LIMIT 10"</span>)  </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM customers LIMIT 10"</span>)  </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -390,8 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="query-1-retrieve-the-first-10-rows-from-the-developers-table" class="level1">
 <h1>Query 1: Retrieve the first 10 rows from the ‘developers’ table</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM developers LIMIT 10"</span>)  </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM developers LIMIT 10"</span>)  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -471,8 +411,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="query-1-retrieve-the-first-10-rows-from-the-assets-table" class="level1">
 <h1>Query 1: Retrieve the first 10 rows from the ‘assets’ table</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM assets LIMIT 10"</span>)  </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM assets LIMIT 10"</span>)  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -563,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="query-1-retrieve-the-first-10-rows-from-the-timelines-table" class="level1">
 <h1>Query 1: Retrieve the first 10 rows from the ‘timelines’ table</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM timelines LIMIT 10"</span>)  </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM timelines LIMIT 10"</span>)  </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <colgroup>
@@ -648,10 +588,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="section" class="level1">
 <h1></h1>
 </section>
-<section id="dont-forget-to-disconnect-from-the-database" class="level1">
-<h1>Don’t forget to disconnect from the database</h1>
+<section id="disconnect-from-the-database" class="level1">
+<h1>Disconnect from the database</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
