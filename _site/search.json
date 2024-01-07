@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Connect to the provided SQLite Database",
+    "section": "",
+    "text": "#’ @title 1_Local_SQLite.R\n#’ @description Connecting querying and modifying a local SQLite DB file\n#’ @author NMCG\n#’ @bugs None\n#’ @keywords SQL, DBI, query, execute, tabular, local\n#’ @see https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html\n#’ @seealso https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html"
+  },
+  {
+    "objectID": "index.html#clear-console-on-each-execute-and-set-chunk-default-to-not-show-code",
+    "href": "index.html#clear-console-on-each-execute-and-set-chunk-default-to-not-show-code",
+    "title": "Connect to the provided SQLite DB",
+    "section": "Clear console on each execute and set chunk default to not show code",
+    "text": "Clear console on each execute and set chunk default to not show code\n\ncat('\\014')"
+  },
+  {
+    "objectID": "index.html#set-a-cran-mirror-for-package-installation",
+    "href": "index.html#set-a-cran-mirror-for-package-installation",
+    "title": "Connect to the provided SQLite DB",
+    "section": "Set a CRAN mirror for package installation",
+    "text": "Set a CRAN mirror for package installation\n\noptions(repos = c(CRAN = \"https://cloud.r-project.org\"))"
+  },
+  {
+    "objectID": "index.html#download-and-load-libraries",
+    "href": "index.html#download-and-load-libraries",
+    "title": "Connect to the provided SQLite Database",
+    "section": "Download and load libraries",
+    "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#clear-console-on-each-execute",
+    "href": "index.html#clear-console-on-each-execute",
+    "title": "Connect to the provided SQLite Database",
+    "section": "Clear console on each execute",
+    "text": "Clear console on each execute\n\n# Clear console on each execute \ncat('\\014')"
+  }
+]
