@@ -83,18 +83,26 @@ knitr::kable(result)
 
 ```{r echo=FALSE}
 
-# SQL query 
+# SQL query, adding a subquery as groupby was not accepting AVG
 query <- "
 SELECT 
-  COUNT(a.AssetID) AS NumberOfAssets, 
+  AssetCount.NumberOfAssets, 
   AVG(julianday(p.EndDate) - julianday(p.StartDate)) AS AverageDevelopmentTime
 FROM 
   Projects p
-JOIN 
-  Assets a ON p.ProjectID = a.ProjectID
+INNER JOIN 
+  (SELECT 
+     ProjectID, 
+     COUNT(*) AS NumberOfAssets 
+   FROM 
+     Assets 
+   GROUP BY 
+     ProjectID) AS AssetCount ON p.ProjectID = AssetCount.ProjectID
 GROUP BY 
-  NumberOfAssets;
-"
+  AssetCount.NumberOfAssets
+ORDER BY 
+  AssetCount.NumberOfAssets DESC;
+  "
 
 # Executing the query and assigning results to variable
 result <- dbGetQuery(conn, query)
