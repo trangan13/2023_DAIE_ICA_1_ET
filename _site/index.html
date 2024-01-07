@@ -189,9 +189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="core-queries" class="level1">
 <h1>Core Queries</h1>
-</section>
-<section id="query-1-total-budget-and-project-count-per-country" class="level1">
-<h1>Query 1: Total Budget and Project Count per Country</h1>
+<section id="query-1-total-budget-and-project-count-per-country" class="level2">
+<h2 class="anchored" data-anchor-id="query-1-total-budget-and-project-count-per-country">Query 1: Total Budget and Project Count per Country</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -238,8 +237,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="query-2-average-project-development-time-by-number-of-assets" class="level1">
-<h1>Query 2: Average project development time by number of assets</h1>
+<section id="query-2-average-project-development-time-by-number-of-assets" class="level2">
+<h2 class="anchored" data-anchor-id="query-2-average-project-development-time-by-number-of-assets">Query 2: Average project development time by number of assets</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -263,8 +262,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="query-3-top-three-developers-based-on-successful-project-count" class="level1">
-<h1>Query 3: Top three developers based on successful project count</h1>
+<section id="query-3-top-three-developers-based-on-successful-project-count" class="level2">
+<h2 class="anchored" data-anchor-id="query-3-top-three-developers-based-on-successful-project-count">Query 3: Top three developers based on successful project count</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -291,6 +290,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</section>
+</section>
+<section id="sql-concept-demonstration" class="level1">
+<h1>SQL Concept Demonstration</h1>
+<section id="select-with-like-and-or-find-developers-with-specialization-as-programmer-or-writer." class="level3">
+<h3 class="anchored" data-anchor-id="select-with-like-and-or-find-developers-with-specialization-as-programmer-or-writer."><strong>1. SELECT with LIKE and OR: Find developers with specialization as Programmer or Writer.</strong></h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">DeveloperID</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Specialization</th>
+<th style="text-align: right;">ExperienceYears</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">201</td>
+<td style="text-align: left;">Alice Johnson</td>
+<td style="text-align: left;">Programmer</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">202</td>
+<td style="text-align: left;">Bob Smith</td>
+<td style="text-align: left;">Programmer</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">Luis Hernandez</td>
+<td style="text-align: left;">Writer</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="select-with-distinct-and-order-by-list-distinct-asset-types." class="level3">
+<h3 class="anchored" data-anchor-id="select-with-distinct-and-order-by-list-distinct-asset-types."><strong>2. SELECT with DISTINCT and ORDER BY: List distinct asset types.</strong></h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">3D Model</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Animation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Character Model</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cinematic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Environment Design</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gameplay Script</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Level Design</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sound</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Texture</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UI Element</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="subquery-with-select-filter-projects-with-above-average-budgets" class="level3">
+<h3 class="anchored" data-anchor-id="subquery-with-select-filter-projects-with-above-average-budgets"><strong>3. Subquery with SELECT: Filter projects with above average budgets</strong></h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">ProjectID</th>
+<th style="text-align: left;">ProjectName</th>
+<th style="text-align: left;">StartDate</th>
+<th style="text-align: left;">EndDate</th>
+<th style="text-align: right;">Budget</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: right;">CustomerID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">105</td>
+<td style="text-align: left;">Ocean Odyssey</td>
+<td style="text-align: left;">2023-03-01</td>
+<td style="text-align: left;">2024-06-30</td>
+<td style="text-align: right;">300000</td>
+<td style="text-align: left;">In Progress</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">106</td>
+<td style="text-align: left;">Desert Survival</td>
+<td style="text-align: left;">2024-07-01</td>
+<td style="text-align: left;">2024-12-31</td>
+<td style="text-align: right;">350000</td>
+<td style="text-align: left;">Planned</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">107</td>
+<td style="text-align: left;">Frozen Frontier</td>
+<td style="text-align: left;">2025-01-01</td>
+<td style="text-align: left;">2025-06-30</td>
+<td style="text-align: right;">400000</td>
+<td style="text-align: left;">Planned</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">108</td>
+<td style="text-align: left;">Cybernetic Dreams</td>
+<td style="text-align: left;">2025-07-01</td>
+<td style="text-align: left;">2025-12-31</td>
+<td style="text-align: right;">450000</td>
+<td style="text-align: left;">Planned</td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 </section>
 <section id="disconnect-from-the-database" class="level1">
 <h1>Disconnect from the database</h1>

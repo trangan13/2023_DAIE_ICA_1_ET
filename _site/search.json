@@ -26,5 +26,26 @@
     "title": "Connect to the provided SQLite Database",
     "section": "Download and load libraries",
     "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)"
+  },
+  {
+    "objectID": "index.html#query-1-total-budget-and-project-count-per-country",
+    "href": "index.html#query-1-total-budget-and-project-count-per-country",
+    "title": "Connect to the provided SQLite Database",
+    "section": "Query 1: Total Budget and Project Count per Country",
+    "text": "Query 1: Total Budget and Project Count per Country\n\n\n\n\n\nCustomerCountry\nTotalBudget\nProjectCount\n\n\n\n\nSpain\n650000\n2\n\n\nUK\n550000\n2\n\n\nNetherlands\n400000\n1\n\n\nItaly\n250000\n1\n\n\nFrance\n200000\n1\n\n\nGermany\n150000\n1"
+  },
+  {
+    "objectID": "index.html#query-2-average-project-development-time-by-number-of-assets",
+    "href": "index.html#query-2-average-project-development-time-by-number-of-assets",
+    "title": "Connect to the provided SQLite Database",
+    "section": "Query 2: Average project development time by number of assets",
+    "text": "Query 2: Average project development time by number of assets\n\n\n\n\n\nNumberOfAssets\nAverageDevelopmentTime\n\n\n\n\n11\n181.5\n\n\n10\n212.5"
+  },
+  {
+    "objectID": "index.html#query-3-top-three-developers-based-on-successful-project-count",
+    "href": "index.html#query-3-top-three-developers-based-on-successful-project-count",
+    "title": "Connect to the provided SQLite Database",
+    "section": "Query 3: Top three developers based on successful project count",
+    "text": "Query 3: Top three developers based on successful project count\n\n\n\n\n\nName\nSuccessfulProjects\n\n\n\n\nMorgan Lee\n2\n\n\nJordan Kim\n1\n\n\nAlice Johnson\n1"
   }
 ]

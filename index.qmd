@@ -52,7 +52,7 @@ In the first part of the assestment, we will write basic SQL queries to extract 
 
 # Core Queries 
 
-# Query 1: Total Budget and Project Count per Country
+## Query 1: Total Budget and Project Count per Country
 
 ```{r echo=FALSE}
 
@@ -79,7 +79,7 @@ knitr::kable(result)
 
 ```
 
-# Query 2: Average project development time by number of assets
+## Query 2: Average project development time by number of assets
 
 ```{r echo=FALSE}
 
@@ -110,7 +110,7 @@ result <- dbGetQuery(conn, query)
 knitr::kable(result)
 ```
 
-# Query 3: Top three developers based on successful project count
+## Query 3: Top three developers based on successful project count
 
 ```{r echo=FALSE}
 
@@ -138,6 +138,59 @@ LIMIT 3;
 result <- dbGetQuery(conn, query)
 
 knitr::kable(result)
+```
+
+# SQL Concept Demonstration
+
+### **1. SELECT with LIKE and OR: Find developers with specialization as Programmer or Writer.**
+
+```{r echo=FALSE}
+
+# SQL query 
+query <- "
+SELECT *
+FROM Developers
+WHERE Specialization LIKE '%Programmer%' OR Specialization LIKE '%Writer%';
+
+"
+
+# Executing the query and assigning results to variable
+result <- dbGetQuery(conn, query)
+
+knitr::kable(result)
+
+
+```
+
+### **2. SELECT with DISTINCT and ORDER BY: List distinct asset types.**
+
+```{r echo=FALSE}
+
+# SQL query  
+query <- " 
+SELECT DISTINCT Type
+FROM Assets
+ORDER BY Type;
+ "  
+
+# Executing the query and assigning results to variable 
+result <- dbGetQuery(conn, query)  
+knitr::kable(result)  
+```
+
+### **3.  Subquery with SELECT: Filter projects with above average budgets**
+
+```{r echo=FALSE}
+# SQL query   
+query <- "  
+SELECT *
+FROM Projects
+WHERE Budget > (SELECT AVG(Budget) FROM Projects);
+"    
+
+# Executing the query and assigning results to variable  
+result <- dbGetQuery(conn, query)   
+knitr::kable(result)  
 ```
 
 # Disconnect from the database
