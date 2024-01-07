@@ -79,17 +79,56 @@ knitr::kable(result)
 
 ```
 
-# Query 1: Retrieve the first 10 rows from the 'customers' table
+# Query 2: Average project development time by number of assets
 
-```{r}
-result <- dbGetQuery(conn, "SELECT * FROM customers LIMIT 10")  
+```{r echo=FALSE}
+
+# SQL query 
+query <- "
+SELECT 
+  COUNT(a.AssetID) AS NumberOfAssets, 
+  AVG(julianday(p.EndDate) - julianday(p.StartDate)) AS AverageDevelopmentTime
+FROM 
+  Projects p
+JOIN 
+  Assets a ON p.ProjectID = a.ProjectID
+GROUP BY 
+  NumberOfAssets;
+"
+
+# Executing the query and assigning results to variable
+result <- dbGetQuery(conn, query)
+
 knitr::kable(result)
 ```
 
-# Query 1: Retrieve the first 10 rows from the 'developers' table
+# Query 3: Top three developers based on successful project count
 
-```{r}
-result <- dbGetQuery(conn, "SELECT * FROM developers LIMIT 10")  
+```{r echo=FALSE}
+
+# SQL query 
+query <- "
+SELECT 
+  d.Name, 
+  COUNT(pd.ProjectID) AS SuccessfulProjects
+FROM 
+  Developers d
+JOIN 
+  ProjectDevelopers pd ON d.DeveloperID = pd.DeveloperID
+JOIN 
+  Projects p ON pd.ProjectID = p.ProjectID
+WHERE 
+  p.Status = 'Completed'
+GROUP BY 
+  d.DeveloperID
+ORDER BY 
+  SuccessfulProjects DESC
+LIMIT 3;
+"
+
+# Executing the query and assigning results to variable
+result <- dbGetQuery(conn, query)
+
 knitr::kable(result)
 ```
 
