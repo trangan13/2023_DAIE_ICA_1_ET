@@ -25,7 +25,7 @@
     "href": "index.html#download-and-load-libraries",
     "title": "Part A: Introduction",
     "section": "Download and load libraries",
-    "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)"
+    "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\nif(!require(\"scales\")) install.packages(\"scales\")\n\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)\nlibrary(ggplot2)\nlibrary(scales)"
   },
   {
     "objectID": "index.html#query-1-total-budget-and-project-count-per-country",
@@ -60,7 +60,7 @@
     "href": "index.html#model",
     "title": "Part A: Introduction",
     "section": "Model",
-    "text": "Model\n\n\n\n\n\nProjectID\nBudget\nSuccess\nTeamSize\n\n\n\n\n101\n100000\n1\n7\n\n\n102\n200000\n1\n9\n\n\n103\n150000\n1\n7\n\n\n104\n250000\n1\n8\n\n\n105\n300000\n0\n1\n\n\n106\n350000\n0\n1\n\n\n107\n400000\n0\n1\n\n\n108\n450000\n0\n1\n\n\n\n\n\n\nCall:\nlm(formula = Success ~ Budget + TeamSize, data = dataset)\n\nResiduals:\n       1        2        3        4        5        6        7        8 \n 0.03351 -0.12030  0.07671  0.04301 -0.07303 -0.02983  0.01337  0.05657 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  2.121e-01  1.791e-01   1.185 0.289433    \nBudget      -8.640e-07  4.378e-07  -1.974 0.105437    \nTeamSize     1.201e-01  1.464e-02   8.203 0.000438 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.08116 on 5 degrees of freedom\nMultiple R-squared:  0.9835,    Adjusted R-squared:  0.9769 \nF-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05"
+    "text": "Model\n\n\n\n\n\nProjectID\nBudget\nSuccess\nTeamSize\n\n\n\n\n101\n100000\n1\n7\n\n\n102\n200000\n1\n9\n\n\n103\n150000\n1\n7\n\n\n104\n250000\n1\n8\n\n\n105\n300000\n0\n1\n\n\n106\n350000\n0\n1\n\n\n107\n400000\n0\n1\n\n\n108\n450000\n0\n1\n\n\n\n\n\n\nLinear Regression model\n\n\n\nCall:\nlm(formula = Success ~ Budget + TeamSize, data = dataset)\n\nResiduals:\n       1        2        3        4        5        6        7        8 \n 0.03351 -0.12030  0.07671  0.04301 -0.07303 -0.02983  0.01337  0.05657 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  2.121e-01  1.791e-01   1.185 0.289433    \nBudget      -8.640e-07  4.378e-07  -1.974 0.105437    \nTeamSize     1.201e-01  1.464e-02   8.203 0.000438 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.08116 on 5 degrees of freedom\nMultiple R-squared:  0.9835,    Adjusted R-squared:  0.9769 \nF-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05\n\n\n\n\nScatter Plot: Budget vs. Success\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\nScatter Plot: Team Size vs. Success\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   },
   {
     "objectID": "index.html#interpret",
@@ -75,5 +75,12 @@
     "title": "Part A: Introduction",
     "section": "Discuss",
     "text": "Discuss"
+  },
+  {
+    "objectID": "index.html#table",
+    "href": "index.html#table",
+    "title": "Part A: Introduction",
+    "section": "Table",
+    "text": "Table\n\n\n\n\n\nProjectID\nBudget\nSuccess\nTeamSize\n\n\n\n\n101\n100000\n1\n7\n\n\n102\n200000\n1\n9\n\n\n103\n150000\n1\n7\n\n\n104\n250000\n1\n8\n\n\n105\n300000\n0\n1\n\n\n106\n350000\n0\n1\n\n\n107\n400000\n0\n1\n\n\n108\n450000\n0\n1\n\n\n\n\n\n\nLinear Regression model\n\n\n\nCall:\nlm(formula = Success ~ Budget + TeamSize, data = dataset)\n\nResiduals:\n       1        2        3        4        5        6        7        8 \n 0.03351 -0.12030  0.07671  0.04301 -0.07303 -0.02983  0.01337  0.05657 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  2.121e-01  1.791e-01   1.185 0.289433    \nBudget      -8.640e-07  4.378e-07  -1.974 0.105437    \nTeamSize     1.201e-01  1.464e-02   8.203 0.000438 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.08116 on 5 degrees of freedom\nMultiple R-squared:  0.9835,    Adjusted R-squared:  0.9769 \nF-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05\n\n\n\n\nScatter Plot: Success vs. Budget\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\nScatter Plot: Success vs. Team Size\n\n\n`geom_smooth()` using formula = 'y ~ x'"
   }
 ]

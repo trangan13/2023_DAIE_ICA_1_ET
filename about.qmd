@@ -15,3 +15,7 @@ title: "References"
 -   McGuinness, N. (2023). 2023_MSC_DataAnalytics_Shiny_Quarto_Demo. GitHub. Available at: <https://github.com/nmcguinness/2023_MSC_DataAnalytics_Shiny_Quarto_Demo> (Accessed: 7 January 2024).
 
 -   McGuinness, N. (2023). 2023_MSC_DataAnalytics_Quarto_Demo. GitHub. Available at: <https://github.com/nmcguinness/2023_MSC_DataAnalytics_Quarto_Demo/tree/main> (Accessed: 7 January 2024).
+
+-   Statology. (n.d.). How to Use scale_x_continuous in ggplot2 (With Examples). Retrieved January 9, 2024, from <https://www.statology.org/ggplot2-scale_x_continuous/>
+
+-   Statology. (n.d.). How to Use scale_y_continuous in ggplot2 (With Examples). Retrieved January 9, 2024, from <https://www.statology.org/ggplot2-scale_y_continuous/>

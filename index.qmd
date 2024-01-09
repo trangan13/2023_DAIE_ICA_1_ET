@@ -19,11 +19,15 @@ if(!require("DBI")) install.packages("DBI")
 if(!require("dplyr")) install.packages("dplyr") 
 if(!require("tidyverse")) install.packages("tidyverse")
 if(!require("RSQLite")) install.packages("RSQLite")
+if(!require("scales")) install.packages("scales")
+
 
 library(DBI) 
 library(dplyr) 
 library(tidyverse)
 library(RSQLite)
+library(ggplot2)
+library(scales)
 ```
 
 ## Connect to the provided SQLite Database
@@ -184,7 +188,7 @@ knitr::kable(result)
 
 In this part of the assessments, I will utilize the same datasets to apply a linear regression analysis that will provide some trends and patterns in the game development lifecycle. The assestment specifies to perform linear regression to predict the success rate of a project based on its budget and team size.
 
-## Model
+## Table
 
 ```{r echo=FALSE}
 # To be able to perform the request, I first need to stablish what succesful looks like and how to account for a team size as there are no columns with either data. I will define completion as success and team sized based on number of developers assigned to a project. 
@@ -218,20 +222,53 @@ GROUP BY
 dataset <- dbGetQuery(conn, query)
 knitr::kable(dataset) 
 
+
+```
+
+### Linear Regression model
+
+```{r echo=FALSE}
+
 # Now that the table is showing the data expected I am going to run linear regression and plot it. 
 
 model <- lm(Success ~ Budget + TeamSize, data = dataset)
 summary(model)
- 
 ```
 
-### Scatter Plot: Budget vs. Success
+### Scatter Plot: Success vs. Budget
 
-### Scatter Plot: Team Size vs. Success
+```{r echo=FALSE}
+# Using the scales package in order to show budget data more clearly. 
 
-## Interpret
+ggplot(dataset, aes(x = Budget, y = Success)) +
+  geom_point() +
+  geom_smooth(method = "lm", color = "green") +
+  labs(title = "Success vs. Budget", x = "Budget",y = "Success Rate") +
+  scale_x_continuous(labels = label_number()) +
+  theme_minimal()
 
-## Discuss
+```
+
+### Scatter Plot: Success vs. Team Size
+
+```{r echo=FALSE}
+# Using the scales package in order to show full integers in team size from 1 till 9. 
+
+ggplot(dataset, aes(x = TeamSize, y = Success)) +
+  geom_point() +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "Success vs. Team Size", x = "Team Size", y = "Success Rate") +
+  scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10)) +
+  theme_minimal()
+
+```
+
+## Interpretation
+
+```{r echo=FALSE}
+```
+
+## Discussion
 
 # Disconnect from the database
 
