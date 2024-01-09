@@ -19,3 +19,7 @@ title: "References"
 -   Statology. (n.d.). How to Use scale_x_continuous in ggplot2 (With Examples). Retrieved January 9, 2024, from <https://www.statology.org/ggplot2-scale_x_continuous/>
 
 -   Statology. (n.d.). How to Use scale_y_continuous in ggplot2 (With Examples). Retrieved January 9, 2024, from <https://www.statology.org/ggplot2-scale_y_continuous/>
+
+-   Frost, J. (n.d.). How to Interpret P-values and Coefficients in Regression Analysis. Statistics By Jim. Retrieved January 9, 2024, from <https://statisticsbyjim.com/regression/interpret-coefficients-p-values-regression/>
+
+-   RDocumentation. (n.d.). reactable: Create an interactive data table. Available at: <https://www.rdocumentation.org/packages/reactable/versions/0.4.4/topics/reactable> (Accessed: 7 January 2024)

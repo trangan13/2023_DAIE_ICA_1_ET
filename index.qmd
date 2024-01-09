@@ -20,6 +20,7 @@ if(!require("dplyr")) install.packages("dplyr")
 if(!require("tidyverse")) install.packages("tidyverse")
 if(!require("RSQLite")) install.packages("RSQLite")
 if(!require("scales")) install.packages("scales")
+if(!require(reactable)) install.packages("reactable")
 
 
 library(DBI) 
@@ -28,6 +29,8 @@ library(tidyverse)
 library(RSQLite)
 library(ggplot2)
 library(scales)
+library(reactable)
+
 ```
 
 ## Connect to the provided SQLite Database
@@ -235,7 +238,7 @@ model <- lm(Success ~ Budget + TeamSize, data = dataset)
 summary(model)
 ```
 
-### Scatter Plot: Success vs. Budget
+### Success vs. Budget
 
 ```{r echo=FALSE}
 # Using the scales package in order to show budget data more clearly. 
@@ -249,7 +252,7 @@ ggplot(dataset, aes(x = Budget, y = Success)) +
 
 ```
 
-### Scatter Plot: Success vs. Team Size
+### Success vs. Team Size
 
 ```{r echo=FALSE}
 # Using the scales package in order to show full integers in team size from 1 till 9. 
@@ -265,10 +268,21 @@ ggplot(dataset, aes(x = TeamSize, y = Success)) +
 
 ## Interpretation
 
-```{r echo=FALSE}
-```
+-   **Budget vs. Success**
+
+-   The coefficient for **`Budget`** is approximately -8.64e-07 with a p-value of 0.105437. This coefficient suggests a negative relationship between the budget and the success rate of a project. However, the p-value is greater than 0.05, which indicates that this relationship is not statistically significant.
+
+-   **Plot**: The negative slope seen in the plot reflects the negative coefficient of the budget in the model. However, given the lack of statistical significance, this trend should be interpreted cautiously. It suggests that higher budgets might not necessarily lead to higher success rates, but the evidence isn't strong enough to firmly conclude that higher budgets negatively impact success.
+
+-   **Team Size vs. Success**
+
+-   The coefficient for **`TeamSize`** is 0.1201 with a p-value of 0.000438, which is highly significant. This indicates a clear positive relationship between team size and success rate. The P-value is lower than .05 which suggest there is statistical significance to this result.
+
+-   **Plot**: The positive slope aligns with the significant positive coefficient for team size. This visualization reinforces the model's finding: larger teams are associated with higher success rates in projects. The strength of this relationship is underscored by both the steepness of the slope in the plot and the statistical significance in the model results.
 
 ## Discussion
+
+Overall we can gather some insight from the linear regression model and the plots, but it is important to consider that the source of data is quite limited. There is also relevance in understanding whether the measure of success, completion or not completion of a project is valid. The data is not only limited to a 0 or a 1 in this exercise so we cannot fully consider it as linearly related to the outcome, but also the is reason to doubt that there might be no correlation between budget and teamsize and our measure of success.
 
 # Disconnect from the database
 
