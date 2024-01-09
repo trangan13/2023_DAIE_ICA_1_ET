@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CA2_SQL_LinearRegression</title>
+<title>CA2_SQL_LinearRegression - Part: B - Linear Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -123,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -145,360 +111,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-
-
-<section id="clear-console-on-each-execute" class="level2">
-<h2 class="anchored" data-anchor-id="clear-console-on-each-execute">Clear console on each execute</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear console on each execute </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'</span><span class="sc">\014</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div style="page-break-after: always;"></div>
-</div>
-</section>
-<section id="download-and-load-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="download-and-load-libraries">Download and load libraries</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DBI"</span>)) <span class="fu">install.packages</span>(<span class="st">"DBI"</span>) </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"dplyr"</span>)) <span class="fu">install.packages</span>(<span class="st">"dplyr"</span>) </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"RSQLite"</span>)) <span class="fu">install.packages</span>(<span class="st">"RSQLite"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI) </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="connect-to-the-provided-sqlite-database" class="level2">
-<h2 class="anchored" data-anchor-id="connect-to-the-provided-sqlite-database">Connect to the provided SQLite Database</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"ICA_2023.sqlite"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="part-a-introduction" class="level1">
-<h1>Part A: Introduction</h1>
-<p>In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries.</p>
-</section>
-<section id="core-queries" class="level1">
-<h1>Core Queries</h1>
-<section id="query-1-total-budget-and-project-count-per-country" class="level2">
-<h2 class="anchored" data-anchor-id="query-1-total-budget-and-project-count-per-country">Query 1: Total Budget and Project Count per Country</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">CustomerCountry</th>
-<th style="text-align: right;">TotalBudget</th>
-<th style="text-align: right;">ProjectCount</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Spain</td>
-<td style="text-align: right;">650000</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UK</td>
-<td style="text-align: right;">550000</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">400000</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Italy</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">France</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="query-2-average-project-development-time-by-number-of-assets" class="level2">
-<h2 class="anchored" data-anchor-id="query-2-average-project-development-time-by-number-of-assets">Query 2: Average project development time by number of assets</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">NumberOfAssets</th>
-<th style="text-align: right;">AverageDevelopmentTime</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">181.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">212.5</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="query-3-top-three-developers-based-on-successful-project-count" class="level2">
-<h2 class="anchored" data-anchor-id="query-3-top-three-developers-based-on-successful-project-count">Query 3: Top three developers based on successful project count</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: right;">SuccessfulProjects</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Morgan Lee</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Jordan Kim</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Alice Johnson</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</section>
-<section id="sql-concepts-demonstration" class="level1">
-<h1>SQL Concepts Demonstration</h1>
-<section id="select-with-like-and-or-find-developers-with-specialization-as-programmer-or-writer." class="level3">
-<h3 class="anchored" data-anchor-id="select-with-like-and-or-find-developers-with-specialization-as-programmer-or-writer."><strong>1. SELECT with LIKE and OR: Find developers with specialization as Programmer or Writer.</strong></h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">DeveloperID</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Specialization</th>
-<th style="text-align: right;">ExperienceYears</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">201</td>
-<td style="text-align: left;">Alice Johnson</td>
-<td style="text-align: left;">Programmer</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">202</td>
-<td style="text-align: left;">Bob Smith</td>
-<td style="text-align: left;">Programmer</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">212</td>
-<td style="text-align: left;">Luis Hernandez</td>
-<td style="text-align: left;">Writer</td>
-<td style="text-align: right;">6</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="select-with-distinct-and-order-by-list-of-distinct-asset-types-ordered-alphabetically." class="level3">
-<h3 class="anchored" data-anchor-id="select-with-distinct-and-order-by-list-of-distinct-asset-types-ordered-alphabetically."><strong>2. SELECT with DISTINCT and ORDER BY: List of distinct asset types ordered alphabetically.</strong></h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">3D Model</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Animation</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Character Model</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Cinematic</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Environment Design</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Gameplay Script</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Level Design</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Sound</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Texture</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UI Element</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="subquery-with-select-filter-projects-with-above-average-budgets" class="level3">
-<h3 class="anchored" data-anchor-id="subquery-with-select-filter-projects-with-above-average-budgets"><strong>3. Subquery with SELECT: Filter projects with above average budgets</strong></h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 15%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: left;">ProjectName</th>
-<th style="text-align: left;">StartDate</th>
-<th style="text-align: left;">EndDate</th>
-<th style="text-align: right;">Budget</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: right;">CustomerID</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">105</td>
-<td style="text-align: left;">Ocean Odyssey</td>
-<td style="text-align: left;">2023-03-01</td>
-<td style="text-align: left;">2024-06-30</td>
-<td style="text-align: right;">300000</td>
-<td style="text-align: left;">In Progress</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">106</td>
-<td style="text-align: left;">Desert Survival</td>
-<td style="text-align: left;">2024-07-01</td>
-<td style="text-align: left;">2024-12-31</td>
-<td style="text-align: right;">350000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">107</td>
-<td style="text-align: left;">Frozen Frontier</td>
-<td style="text-align: left;">2025-01-01</td>
-<td style="text-align: left;">2025-06-30</td>
-<td style="text-align: right;">400000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">108</td>
-<td style="text-align: left;">Cybernetic Dreams</td>
-<td style="text-align: left;">2025-07-01</td>
-<td style="text-align: left;">2025-12-31</td>
-<td style="text-align: right;">450000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">8</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</section>
-<section id="part-b-linear-regression" class="level1">
-<h1>Part B: Linear Regression</h1>
-<p>In this part of the assessments, I will utilize the same datasets to apply a linear regression analysis that will provide some trends and patterns in the game development lifecycle. The assestment specifies to perform linear regression to predict the success rate of a project based on its budget and team size.</p>
-<section id="model" class="level2">
-<h2 class="anchored" data-anchor-id="model">Model</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: right;">Budget</th>
-<th style="text-align: right;">Success</th>
-<th style="text-align: right;">TeamSize</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">101</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">103</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="interpret" class="level2">
-<h2 class="anchored" data-anchor-id="interpret">Interpret</h2>
-</section>
-<section id="discuss" class="level2">
-<h2 class="anchored" data-anchor-id="discuss">Discuss</h2>
-</section>
-</section>
-<section id="disconnect-from-the-database" class="level1">
-<h1>Disconnect from the database</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Part: B - Linear Regression</h1>
 </div>
 
 
-</section>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

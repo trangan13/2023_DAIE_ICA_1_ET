@@ -9,43 +9,71 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Connect to the provided SQLite Database",
+    "title": "Part A: Introduction",
     "section": "",
-    "text": "#’ @title 1_Local_SQLite.R\n#’ @description Connecting querying and modifying a local SQLite DB file\n#’ @author NMCG\n#’ @bugs None\n#’ @keywords SQL, DBI, query, execute, tabular, local\n#’ @see https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html\n#’ @seealso https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html"
+    "text": "# Clear console on each execute \ncat('\\014')"
   },
   {
     "objectID": "index.html#clear-console-on-each-execute",
     "href": "index.html#clear-console-on-each-execute",
-    "title": "Connect to the provided SQLite Database",
-    "section": "Clear console on each execute",
-    "text": "Clear console on each execute\n\n# Clear console on each execute \ncat('\\014')"
+    "title": "Part A: Introduction",
+    "section": "",
+    "text": "# Clear console on each execute \ncat('\\014')"
   },
   {
     "objectID": "index.html#download-and-load-libraries",
     "href": "index.html#download-and-load-libraries",
-    "title": "Connect to the provided SQLite Database",
+    "title": "Part A: Introduction",
     "section": "Download and load libraries",
     "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)"
   },
   {
     "objectID": "index.html#query-1-total-budget-and-project-count-per-country",
     "href": "index.html#query-1-total-budget-and-project-count-per-country",
-    "title": "Connect to the provided SQLite Database",
+    "title": "Part A: Introduction",
     "section": "Query 1: Total Budget and Project Count per Country",
     "text": "Query 1: Total Budget and Project Count per Country\n\n\n\n\n\nCustomerCountry\nTotalBudget\nProjectCount\n\n\n\n\nSpain\n650000\n2\n\n\nUK\n550000\n2\n\n\nNetherlands\n400000\n1\n\n\nItaly\n250000\n1\n\n\nFrance\n200000\n1\n\n\nGermany\n150000\n1"
   },
   {
     "objectID": "index.html#query-2-average-project-development-time-by-number-of-assets",
     "href": "index.html#query-2-average-project-development-time-by-number-of-assets",
-    "title": "Connect to the provided SQLite Database",
+    "title": "Part A: Introduction",
     "section": "Query 2: Average project development time by number of assets",
     "text": "Query 2: Average project development time by number of assets\n\n\n\n\n\nNumberOfAssets\nAverageDevelopmentTime\n\n\n\n\n11\n181.5\n\n\n10\n212.5"
   },
   {
     "objectID": "index.html#query-3-top-three-developers-based-on-successful-project-count",
     "href": "index.html#query-3-top-three-developers-based-on-successful-project-count",
-    "title": "Connect to the provided SQLite Database",
+    "title": "Part A: Introduction",
     "section": "Query 3: Top three developers based on successful project count",
     "text": "Query 3: Top three developers based on successful project count\n\n\n\n\n\nName\nSuccessfulProjects\n\n\n\n\nMorgan Lee\n2\n\n\nJordan Kim\n1\n\n\nAlice Johnson\n1"
+  },
+  {
+    "objectID": "index.html#connect-to-the-provided-sqlite-database",
+    "href": "index.html#connect-to-the-provided-sqlite-database",
+    "title": "Part A: Introduction",
+    "section": "Connect to the provided SQLite Database",
+    "text": "Connect to the provided SQLite Database\n\nconn &lt;- dbConnect(RSQLite::SQLite(), \"ICA_2023.sqlite\")"
+  },
+  {
+    "objectID": "index.html#model",
+    "href": "index.html#model",
+    "title": "Part A: Introduction",
+    "section": "Model",
+    "text": "Model\n\n\n\n\n\nProjectID\nBudget\nSuccess\nTeamSize\n\n\n\n\n101\n100000\n1\n6\n\n\n102\n200000\n1\n8\n\n\n103\n150000\n1\n6\n\n\n104\n250000\n1\n7"
+  },
+  {
+    "objectID": "index.html#interpret",
+    "href": "index.html#interpret",
+    "title": "Part A: Introduction",
+    "section": "Interpret",
+    "text": "Interpret"
+  },
+  {
+    "objectID": "index.html#discuss",
+    "href": "index.html#discuss",
+    "title": "Part A: Introduction",
+    "section": "Discuss",
+    "text": "Discuss"
   }
 ]

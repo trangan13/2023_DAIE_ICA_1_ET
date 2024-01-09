@@ -174,6 +174,7 @@ FROM Projects
 WHERE Budget > (SELECT AVG(Budget) FROM Projects);
 "    
 
+
 # Executing the query and assigning results to variable  
 result <- dbGetQuery(conn, query)   
 knitr::kable(result)  
@@ -185,12 +186,34 @@ In this part of the assessments, I will utilize the same datasets to apply a lin
 
 ## Model
 
-```{r}
+```{r echo=FALSE}
 # To be able to perform the request, I first need to stablish what succesful looks like and how to account for a team size as there are no columns with either data. I will define completion as success and team sized based on number of developers assigned to a project. 
 
+# SQL query 
+query <- " 
+SELECT 
+  p.ProjectID, 
+  p.Budget,
+  CASE 
+    WHEN p.Status = 'Completed' THEN 1 
+    ELSE 0 
+  END AS Success,
+  COUNT(DISTINCT ad.DeveloperID) AS TeamSize
+FROM 
+  Projects p
+JOIN 
+  Assets a ON p.ProjectID = a.ProjectID
+JOIN
+  AssetsDevelopers ad ON a.AssetID = ad.AssetID
+GROUP BY 
+  p.ProjectID, p.Budget, p.Status;
+"
 
+dataset <- dbGetQuery(conn, query)
 
+# model <- lm(Success ~ Budget + TeamSize, data = dataset)
 
+knitr::kable(dataset)  
 ```
 
 ## Interpret
