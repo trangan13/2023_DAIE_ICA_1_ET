@@ -1,17 +1,3 @@
-\#' @title 1_Local_SQLite.R
-
-\#' @description Connecting querying and modifying a local SQLite DB file
-
-\#' @author NMCG
-
-\#' @bugs None
-
-\#' @keywords SQL, DBI, query, execute, tabular, local
-
-\#' @see <https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html>
-
-\#' @seealso <https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html>
-
 ## Clear console on each execute
 
 ```{r echo=TRUE}
@@ -50,7 +36,7 @@ conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
 
 In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries.
 
-# Core Queries 
+# Core Queries
 
 ## Query 1: Total Budget and Project Count per Country
 
@@ -178,7 +164,7 @@ result <- dbGetQuery(conn, query)
 knitr::kable(result)  
 ```
 
-### **3.  Subquery with SELECT: Filter projects with above average budgets**
+### **3. Subquery with SELECT: Filter projects with above average budgets**
 
 ```{r echo=FALSE}
 # SQL query   
@@ -192,6 +178,24 @@ WHERE Budget > (SELECT AVG(Budget) FROM Projects);
 result <- dbGetQuery(conn, query)   
 knitr::kable(result)  
 ```
+
+# Part B: Linear Regression
+
+In this part of the assessments, I will utilize the same datasets to apply a linear regression analysis that will provide some trends and patterns in the game development lifecycle. The assestment specifies to perform linear regression to predict the success rate of a project based on its budget and team size.
+
+## Model
+
+```{r}
+# To be able to perform the request, I first need to stablish what succesful looks like and how to account for a team size as there are no columns with either data. I will define completion as success and team sized based on number of developers assigned to a project. 
+
+
+
+
+```
+
+## Interpret
+
+## Discuss
 
 # Disconnect from the database
 
