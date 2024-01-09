@@ -459,28 +459,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">101</td>
 <td style="text-align: right;">100000</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">102</td>
 <td style="text-align: right;">200000</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">103</td>
 <td style="text-align: right;">150000</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">104</td>
 <td style="text-align: right;">250000</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">300000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">350000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">400000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">450000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Success ~ Budget + TeamSize, data = dataset)
+
+Residuals:
+       1        2        3        4        5        6        7        8 
+ 0.03351 -0.12030  0.07671  0.04301 -0.07303 -0.02983  0.01337  0.05657 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  2.121e-01  1.791e-01   1.185 0.289433    
+Budget      -8.640e-07  4.378e-07  -1.974 0.105437    
+TeamSize     1.201e-01  1.464e-02   8.203 0.000438 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.08116 on 5 degrees of freedom
+Multiple R-squared:  0.9835,    Adjusted R-squared:  0.9769 
+F-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05</code></pre>
 </div>
 </div>
 </section>
@@ -494,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="disconnect-from-the-database" class="level1">
 <h1>Disconnect from the database</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

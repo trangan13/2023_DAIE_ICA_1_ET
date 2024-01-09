@@ -189,7 +189,7 @@ In this part of the assessments, I will utilize the same datasets to apply a lin
 ```{r echo=FALSE}
 # To be able to perform the request, I first need to stablish what succesful looks like and how to account for a team size as there are no columns with either data. I will define completion as success and team sized based on number of developers assigned to a project. 
 
-# SQL query 
+# SQL query / The query was missing counting developers from the ProjectDeveloper table, as all projects have at least one developer. I am adding that developer but making sure it does not repeat from within the Assets table. 
 query <- " 
 SELECT 
   p.ProjectID, 
@@ -198,23 +198,36 @@ SELECT
     WHEN p.Status = 'Completed' THEN 1 
     ELSE 0 
   END AS Success,
-  COUNT(DISTINCT ad.DeveloperID) AS TeamSize
+  COUNT(DISTINCT combined_devs.DeveloperID) AS TeamSize
 FROM 
   Projects p
-JOIN 
-  Assets a ON p.ProjectID = a.ProjectID
+LEFT JOIN  
+  (
+  SELECT pd.ProjectID, pd.DeveloperID 
+  FROM ProjectDevelopers pd
+  UNION
+  SELECT a.ProjectID, ad.DeveloperID 
+  FROM Assets a
 JOIN
-  AssetsDevelopers ad ON a.AssetID = ad.AssetID
+  AssetsDevelopers ad ON a.AssetID = ad.AssetID) AS combined_devs
+  ON p.ProjectID = combined_devs.ProjectID
 GROUP BY 
-  p.ProjectID, p.Budget, p.Status;
+  p.ProjectID;
 "
 
 dataset <- dbGetQuery(conn, query)
+knitr::kable(dataset) 
 
-# model <- lm(Success ~ Budget + TeamSize, data = dataset)
+# Now that the table is showing the data expected I am going to run linear regression and plot it. 
 
-knitr::kable(dataset)  
+model <- lm(Success ~ Budget + TeamSize, data = dataset)
+summary(model)
+ 
 ```
+
+### Scatter Plot: Budget vs. Success
+
+### Scatter Plot: Team Size vs. Success
 
 ## Interpret
 
