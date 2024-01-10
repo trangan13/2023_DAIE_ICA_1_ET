@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "References",
     "section": "",
-    "text": "Data Carpentry. (2023). SQL databases and R. Data Analysis and Visualisation in R for Ecologists. Available at: https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html (Accessed: 7 January 2024)\nWickham, H. (n.d.). RSQLite. Available at: https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html (Accessed: 7 January 2024)\nSQLite Viewer Web App. (n.d.). SQLite Viewer Web: A free, web-based SQLite Explorer. Available at: https://sqliteviewer.app/#/ICA_2023.sqlite/table/AssetsDevelopers/ (Accessed: 7 January 2024).\nMcGuinness, N. (2023). 1_Local_SQLite.R. In 2023_MSC_DataAnalytics_SQL. Available at: https://github.com/nmcguinness/2023_MSC_DataAnalytics_SQL/blob/main/1_Local_SQLite.R (Accessed: 7 January 2024)​\nBevans, R. (2023). Simple Linear Regression | An Easy Introduction & Examples. Scribbr. Available at: https://www.scribbr.com/statistics/simple-linear-regression/ (Accessed: 7 January 2024)\nMcGuinness, N. (2023). 2023_MSC_DataAnalytics_Shiny_Quarto_Demo. GitHub. Available at: https://github.com/nmcguinness/2023_MSC_DataAnalytics_Shiny_Quarto_Demo (Accessed: 7 January 2024).\nMcGuinness, N. (2023). 2023_MSC_DataAnalytics_Quarto_Demo. GitHub. Available at: https://github.com/nmcguinness/2023_MSC_DataAnalytics_Quarto_Demo/tree/main (Accessed: 7 January 2024)."
+    "text": "Data Carpentry. (2023). SQL databases and R. Data Analysis and Visualisation in R for Ecologists. Available at: https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html (Accessed: 7 January 2024)\nWickham, H. (n.d.). RSQLite. Available at: https://cran.r-project.org/web/packages/RSQLite/vignettes/RSQLite.html (Accessed: 7 January 2024)\nSQLite Viewer Web App. (n.d.). SQLite Viewer Web: A free, web-based SQLite Explorer. Available at: https://sqliteviewer.app/#/ICA_2023.sqlite/table/AssetsDevelopers/ (Accessed: 7 January 2024).\nMcGuinness, N. (2023). 1_Local_SQLite.R. In 2023_MSC_DataAnalytics_SQL. Available at: https://github.com/nmcguinness/2023_MSC_DataAnalytics_SQL/blob/main/1_Local_SQLite.R (Accessed: 7 January 2024)​\nBevans, R. (2023). Simple Linear Regression | An Easy Introduction & Examples. Scribbr. Available at: https://www.scribbr.com/statistics/simple-linear-regression/ (Accessed: 7 January 2024)\nMcGuinness, N. (2023). 2023_MSC_DataAnalytics_Shiny_Quarto_Demo. GitHub. Available at: https://github.com/nmcguinness/2023_MSC_DataAnalytics_Shiny_Quarto_Demo (Accessed: 7 January 2024).\nMcGuinness, N. (2023). 2023_MSC_DataAnalytics_Quarto_Demo. GitHub. Available at: https://github.com/nmcguinness/2023_MSC_DataAnalytics_Quarto_Demo/tree/main (Accessed: 7 January 2024).\nStatology. (n.d.). How to Use scale_x_continuous in ggplot2 (With Examples). Retrieved January 9, 2024, from https://www.statology.org/ggplot2-scale_x_continuous/\nStatology. (n.d.). How to Use scale_y_continuous in ggplot2 (With Examples). Retrieved January 9, 2024, from https://www.statology.org/ggplot2-scale_y_continuous/\nFrost, J. (n.d.). How to Interpret P-values and Coefficients in Regression Analysis. Statistics By Jim. Retrieved January 9, 2024, from https://statisticsbyjim.com/regression/interpret-coefficients-p-values-regression/\nRDocumentation. (n.d.). reactable: Create an interactive data table. Available at: https://www.rdocumentation.org/packages/reactable/versions/0.4.4/topics/reactable (Accessed: 7 January 2024)"
   },
   {
     "objectID": "index.html",
@@ -25,28 +25,28 @@
     "href": "index.html#download-and-load-libraries",
     "title": "Part A: Introduction",
     "section": "Download and load libraries",
-    "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\nif(!require(\"scales\")) install.packages(\"scales\")\n\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)\nlibrary(ggplot2)\nlibrary(scales)"
+    "text": "Download and load libraries\n\nif(!require(\"DBI\")) install.packages(\"DBI\") \nif(!require(\"dplyr\")) install.packages(\"dplyr\") \nif(!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif(!require(\"RSQLite\")) install.packages(\"RSQLite\")\nif(!require(\"scales\")) install.packages(\"scales\")\nif(!require(\"reactable\")) install.packages(\"reactable\")\nif(!require(\"maps\")) install.packages(\"maps\")\n\nlibrary(DBI) \nlibrary(dplyr) \nlibrary(tidyverse)\nlibrary(RSQLite)\nlibrary(ggplot2)\nlibrary(scales)\nlibrary(reactable)\nlibrary(maps)"
   },
   {
     "objectID": "index.html#query-1-total-budget-and-project-count-per-country",
     "href": "index.html#query-1-total-budget-and-project-count-per-country",
     "title": "Part A: Introduction",
     "section": "Query 1: Total Budget and Project Count per Country",
-    "text": "Query 1: Total Budget and Project Count per Country\n\n\n\n\n\nCustomerCountry\nTotalBudget\nProjectCount\n\n\n\n\nSpain\n650000\n2\n\n\nUK\n550000\n2\n\n\nNetherlands\n400000\n1\n\n\nItaly\n250000\n1\n\n\nFrance\n200000\n1\n\n\nGermany\n150000\n1"
+    "text": "Query 1: Total Budget and Project Count per Country\n\n\n\n\n\n\n\nMap visualization of Query 1"
   },
   {
     "objectID": "index.html#query-2-average-project-development-time-by-number-of-assets",
     "href": "index.html#query-2-average-project-development-time-by-number-of-assets",
     "title": "Part A: Introduction",
     "section": "Query 2: Average project development time by number of assets",
-    "text": "Query 2: Average project development time by number of assets\n\n\n\n\n\nNumberOfAssets\nAverageDevelopmentTime\n\n\n\n\n11\n181.5\n\n\n10\n212.5"
+    "text": "Query 2: Average project development time by number of assets"
   },
   {
     "objectID": "index.html#query-3-top-three-developers-based-on-successful-project-count",
     "href": "index.html#query-3-top-three-developers-based-on-successful-project-count",
     "title": "Part A: Introduction",
     "section": "Query 3: Top three developers based on successful project count",
-    "text": "Query 3: Top three developers based on successful project count\n\n\n\n\n\nName\nSuccessfulProjects\n\n\n\n\nMorgan Lee\n2\n\n\nJordan Kim\n1\n\n\nAlice Johnson\n1"
+    "text": "Query 3: Top three developers based on successful project count"
   },
   {
     "objectID": "index.html#connect-to-the-provided-sqlite-database",
@@ -81,6 +81,27 @@
     "href": "index.html#table",
     "title": "Part A: Introduction",
     "section": "Table",
-    "text": "Table\n\n\n\n\n\nProjectID\nBudget\nSuccess\nTeamSize\n\n\n\n\n101\n100000\n1\n7\n\n\n102\n200000\n1\n9\n\n\n103\n150000\n1\n7\n\n\n104\n250000\n1\n8\n\n\n105\n300000\n0\n1\n\n\n106\n350000\n0\n1\n\n\n107\n400000\n0\n1\n\n\n108\n450000\n0\n1\n\n\n\n\n\n\nLinear Regression model\n\n\n\nCall:\nlm(formula = Success ~ Budget + TeamSize, data = dataset)\n\nResiduals:\n       1        2        3        4        5        6        7        8 \n 0.03351 -0.12030  0.07671  0.04301 -0.07303 -0.02983  0.01337  0.05657 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  2.121e-01  1.791e-01   1.185 0.289433    \nBudget      -8.640e-07  4.378e-07  -1.974 0.105437    \nTeamSize     1.201e-01  1.464e-02   8.203 0.000438 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.08116 on 5 degrees of freedom\nMultiple R-squared:  0.9835,    Adjusted R-squared:  0.9769 \nF-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05\n\n\n\n\nScatter Plot: Success vs. Budget\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\nScatter Plot: Success vs. Team Size\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+    "text": "Table\n\n\n\n\n\n\n\nLinear Regression model\n\n\n\nCall:\nlm(formula = Success ~ Budget + TeamSize, data = dataset)\n\nResiduals:\n       1        2        3        4        5        6        7        8 \n 0.03351 -0.12030  0.07671  0.04301 -0.07303 -0.02983  0.01337  0.05657 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  2.121e-01  1.791e-01   1.185 0.289433    \nBudget      -8.640e-07  4.378e-07  -1.974 0.105437    \nTeamSize     1.201e-01  1.464e-02   8.203 0.000438 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.08116 on 5 degrees of freedom\nMultiple R-squared:  0.9835,    Adjusted R-squared:  0.9769 \nF-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05\n\n\n\n\nSuccess vs. Budget\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\nSuccess vs. Team Size\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "index.html#interpretation",
+    "href": "index.html#interpretation",
+    "title": "Part A: Introduction",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nBudget vs. Success\nThe coefficient for Budget is approximately -8.64e-07 with a p-value of 0.105437. This coefficient suggests a negative relationship between the budget and the success rate of a project. However, the p-value is greater than 0.05, which indicates that this relationship is not statistically significant.\nPlot: The negative slope seen in the plot reflects the negative coefficient of the budget in the model. However, given the lack of statistical significance, this trend should be interpreted cautiously. It suggests that higher budgets might not necessarily lead to higher success rates, but the evidence isn’t strong enough to firmly conclude that higher budgets negatively impact success.\nTeam Size vs. Success\nThe coefficient for TeamSize is 0.1201 with a p-value of 0.000438, which is highly significant. This indicates a clear positive relationship between team size and success rate. The P-value is lower than .05 which suggest there is statistical significance to this result.\nPlot: The positive slope aligns with the significant positive coefficient for team size. This visualization reinforces the model’s finding: larger teams are associated with higher success rates in projects. The strength of this relationship is underscored by both the steepness of the slope in the plot and the statistical significance in the model results."
+  },
+  {
+    "objectID": "index.html#discussion",
+    "href": "index.html#discussion",
+    "title": "Part A: Introduction",
+    "section": "Discussion",
+    "text": "Discussion\nOverall we can gather some insight from the linear regression model and the plots, but it is important to consider that the source of data is quite limited. There is also relevance in understanding whether the measure of success, completion or not completion of a project is valid. The data is not only limited to a 0 or a 1 in this exercise so we cannot fully consider it as linearly related to the outcome, but also the is reason to doubt that there might be no correlation between budget and teamsize and our measure of success."
+  },
+  {
+    "objectID": "technologyexploration.html",
+    "href": "technologyexploration.html",
+    "title": "Technology Exploration",
+    "section": "",
+    "text": "Reactable\n\n\nScales"
   }
 ]

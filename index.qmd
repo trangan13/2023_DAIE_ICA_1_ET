@@ -20,8 +20,8 @@ if(!require("dplyr")) install.packages("dplyr")
 if(!require("tidyverse")) install.packages("tidyverse")
 if(!require("RSQLite")) install.packages("RSQLite")
 if(!require("scales")) install.packages("scales")
-if(!require(reactable)) install.packages("reactable")
-
+if(!require("reactable")) install.packages("reactable")
+if(!require("maps")) install.packages("maps")
 
 library(DBI) 
 library(dplyr) 
@@ -30,6 +30,7 @@ library(RSQLite)
 library(ggplot2)
 library(scales)
 library(reactable)
+library(maps)
 
 ```
 
@@ -68,7 +69,47 @@ ORDER BY
 # Executing the query and assigning results to variable
 result <- dbGetQuery(conn, query)
 
-knitr::kable(result)
+reactable(result)
+
+```
+
+### Map visualization of Query 1
+
+```{r echo=FALSE}
+
+# Creating a map using ggplot and maps 
+
+# Cutting the total budget range into 3 quantiles to get low, medium and high budgets.
+result$budget_category <- cut(result$TotalBudget, 
+                              breaks = c(-Inf, quantile(result$TotalBudget, probs = c(1/3, 2/3)), Inf), 
+                              labels = c("yellow", "orange", "red"))
+
+# Create a world map
+world_map <- map_data("world")
+
+
+# Merge data with the map data
+map_data_merged <- merge(world_map, result, by.x = "region", by.y = "CustomerCountry", all.x = TRUE)
+
+# Assigning budget breaks
+budget_breaks <- quantile(result$TotalBudget, probs = c(0, 1/3, 2/3, 1))
+
+# Create labels for the ranges, formatting fixed point no decimals, joining lower and upper of each break. 
+budget_labels <- paste(formatC(head(budget_breaks, -1), format = "f", digits = 0),
+                       " - ", 
+                       formatC(tail(budget_breaks, -1), format = "f", digits = 0))
+
+# Create the plot
+ggplot() +
+  geom_polygon(data = map_data_merged, aes(x = long, y = lat, group = group, fill = budget_category), color = "white") +
+  scale_fill_manual(values = c("yellow", "orange", "red"),
+                    breaks = c("yellow", "orange", "red"),
+                    labels = budget_labels) +
+  theme_minimal() +
+  labs(fill = "Budget Range", title = "Mape of budget ranges") +
+  coord_fixed(1.3, xlim = c(-10, 40), ylim = c(35, 70))
+
+
 
 ```
 
@@ -100,7 +141,7 @@ ORDER BY
 # Executing the query and assigning results to variable
 result <- dbGetQuery(conn, query)
 
-knitr::kable(result)
+reactable(result)
 ```
 
 ## Query 3: Top three developers based on successful project count
@@ -130,7 +171,7 @@ LIMIT 3;
 # Executing the query and assigning results to variable
 result <- dbGetQuery(conn, query)
 
-knitr::kable(result)
+reactable(result)
 ```
 
 # SQL Concepts Demonstration
@@ -150,7 +191,7 @@ WHERE Specialization LIKE '%Programmer%' OR Specialization LIKE '%Writer%';
 # Executing the query and assigning results to variable
 result <- dbGetQuery(conn, query)
 
-knitr::kable(result)
+reactable(result)
 
 
 ```
@@ -168,7 +209,7 @@ ORDER BY Type;
 
 # Executing the query and assigning results to variable 
 result <- dbGetQuery(conn, query)  
-knitr::kable(result)  
+reactable(result)
 ```
 
 ### **3. Subquery with SELECT: Filter projects with above average budgets**
@@ -184,7 +225,7 @@ WHERE Budget > (SELECT AVG(Budget) FROM Projects);
 
 # Executing the query and assigning results to variable  
 result <- dbGetQuery(conn, query)   
-knitr::kable(result)  
+reactable(result) 
 ```
 
 # Part B: Linear Regression
@@ -223,7 +264,7 @@ GROUP BY
 "
 
 dataset <- dbGetQuery(conn, query)
-knitr::kable(dataset) 
+reactable(dataset)
 
 
 ```

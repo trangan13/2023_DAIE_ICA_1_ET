@@ -100,6 +100,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-18.2.0/react.min.js"></script>
+<script src="site_libs/react-18.2.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -164,14 +171,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"RSQLite"</span>)) <span class="fu">install.packages</span>(<span class="st">"RSQLite"</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"scales"</span>)) <span class="fu">install.packages</span>(<span class="st">"scales"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI) </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"reactable"</span>)) <span class="fu">install.packages</span>(<span class="st">"reactable"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"maps"</span>)) <span class="fu">install.packages</span>(<span class="st">"maps"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI) </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reactable)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="connect-to-the-provided-sqlite-database" class="level2">
@@ -190,72 +200,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="query-1-total-budget-and-project-count-per-country">Query 1: Total Budget and Project Count per Country</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">CustomerCountry</th>
-<th style="text-align: right;">TotalBudget</th>
-<th style="text-align: right;">ProjectCount</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Spain</td>
-<td style="text-align: right;">650000</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UK</td>
-<td style="text-align: right;">550000</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">400000</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Italy</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">France</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-b2f5f993e0fb5a9db902" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b2f5f993e0fb5a9db902">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"CustomerCountry":["Spain","UK","Netherlands","Italy","France","Germany"],"TotalBudget":[650000,550000,400000,250000,200000,150000],"ProjectCount":[2,2,1,1,1,1]},"columns":[{"id":"CustomerCountry","name":"CustomerCountry","type":"character"},{"id":"TotalBudget","name":"TotalBudget","type":"numeric"},{"id":"ProjectCount","name":"ProjectCount","type":"numeric"}],"dataKey":"3300a354e73843133130bd749e096c34"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+<section id="map-visualization-of-query-1" class="level3">
+<h3 class="anchored" data-anchor-id="map-visualization-of-query-1">Map visualization of Query 1</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="query-2-average-project-development-time-by-number-of-assets" class="level2">
 <h2 class="anchored" data-anchor-id="query-2-average-project-development-time-by-number-of-assets">Query 2: Average project development time by number of assets</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">NumberOfAssets</th>
-<th style="text-align: right;">AverageDevelopmentTime</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">181.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">212.5</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-940c6f874b12d7ab3bad" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-940c6f874b12d7ab3bad">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"NumberOfAssets":[11,10],"AverageDevelopmentTime":[181.5,212.5]},"columns":[{"id":"NumberOfAssets","name":"NumberOfAssets","type":"numeric"},{"id":"AverageDevelopmentTime","name":"AverageDevelopmentTime","type":"numeric"}],"dataKey":"954a6ea91dadee2e76648f9f965745a7"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -263,28 +230,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="query-3-top-three-developers-based-on-successful-project-count">Query 3: Top three developers based on successful project count</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: right;">SuccessfulProjects</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Morgan Lee</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Jordan Kim</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Alice Johnson</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-b947a6ffc6d37b12452a" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b947a6ffc6d37b12452a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["Morgan Lee","Jordan Kim","Alice Johnson"],"SuccessfulProjects":[2,1,1]},"columns":[{"id":"Name","name":"Name","type":"character"},{"id":"SuccessfulProjects","name":"SuccessfulProjects","type":"numeric"}],"dataKey":"8544df765ee8df17fa777d3572bfd458"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -295,36 +242,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="select-with-like-and-or-find-developers-with-specialization-as-programmer-or-writer."><strong>1. SELECT with LIKE and OR: Find developers with specialization as Programmer or Writer.</strong></h3>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">DeveloperID</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Specialization</th>
-<th style="text-align: right;">ExperienceYears</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">201</td>
-<td style="text-align: left;">Alice Johnson</td>
-<td style="text-align: left;">Programmer</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">202</td>
-<td style="text-align: left;">Bob Smith</td>
-<td style="text-align: left;">Programmer</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">212</td>
-<td style="text-align: left;">Luis Hernandez</td>
-<td style="text-align: left;">Writer</td>
-<td style="text-align: right;">6</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-23946056b610ec477df6" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-23946056b610ec477df6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"DeveloperID":[201,202,212],"Name":["Alice Johnson","Bob Smith","Luis Hernandez"],"Specialization":["Programmer","Programmer","Writer"],"ExperienceYears":[5,3,6]},"columns":[{"id":"DeveloperID","name":"DeveloperID","type":"numeric"},{"id":"Name","name":"Name","type":"character"},{"id":"Specialization","name":"Specialization","type":"character"},{"id":"ExperienceYears","name":"ExperienceYears","type":"numeric"}],"dataKey":"e3f8c161b495e667f4ffffe8702bdea9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -332,45 +251,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="select-with-distinct-and-order-by-list-of-distinct-asset-types-ordered-alphabetically."><strong>2. SELECT with DISTINCT and ORDER BY: List of distinct asset types ordered alphabetically.</strong></h3>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">3D Model</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Animation</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Character Model</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Cinematic</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Environment Design</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Gameplay Script</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Level Design</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Sound</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Texture</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UI Element</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-c52e4f2d7b6314d91097" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c52e4f2d7b6314d91097">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Type":["3D Model","Animation","Character Model","Cinematic","Environment Design","Gameplay Script","Level Design","Sound","Texture","UI Element"]},"columns":[{"id":"Type","name":"Type","type":"character"}],"dataKey":"a02e0f0836d45c36ec1d9de46ad34de6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -378,66 +260,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="subquery-with-select-filter-projects-with-above-average-budgets"><strong>3. Subquery with SELECT: Filter projects with above average budgets</strong></h3>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 22%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 8%">
-<col style="width: 15%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: left;">ProjectName</th>
-<th style="text-align: left;">StartDate</th>
-<th style="text-align: left;">EndDate</th>
-<th style="text-align: right;">Budget</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: right;">CustomerID</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">105</td>
-<td style="text-align: left;">Ocean Odyssey</td>
-<td style="text-align: left;">2023-03-01</td>
-<td style="text-align: left;">2024-06-30</td>
-<td style="text-align: right;">300000</td>
-<td style="text-align: left;">In Progress</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">106</td>
-<td style="text-align: left;">Desert Survival</td>
-<td style="text-align: left;">2024-07-01</td>
-<td style="text-align: left;">2024-12-31</td>
-<td style="text-align: right;">350000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">107</td>
-<td style="text-align: left;">Frozen Frontier</td>
-<td style="text-align: left;">2025-01-01</td>
-<td style="text-align: left;">2025-06-30</td>
-<td style="text-align: right;">400000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">108</td>
-<td style="text-align: left;">Cybernetic Dreams</td>
-<td style="text-align: left;">2025-07-01</td>
-<td style="text-align: left;">2025-12-31</td>
-<td style="text-align: right;">450000</td>
-<td style="text-align: left;">Planned</td>
-<td style="text-align: right;">8</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-6049a9056980eafa7207" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6049a9056980eafa7207">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ProjectID":[105,106,107,108],"ProjectName":["Ocean Odyssey","Desert Survival","Frozen Frontier","Cybernetic Dreams"],"StartDate":["2023-03-01","2024-07-01","2025-01-01","2025-07-01"],"EndDate":["2024-06-30","2024-12-31","2025-06-30","2025-12-31"],"Budget":[300000,350000,400000,450000],"Status":["In Progress","Planned","Planned","Planned"],"CustomerID":[5,6,7,8]},"columns":[{"id":"ProjectID","name":"ProjectID","type":"numeric"},{"id":"ProjectName","name":"ProjectName","type":"character"},{"id":"StartDate","name":"StartDate","type":"character"},{"id":"EndDate","name":"EndDate","type":"character"},{"id":"Budget","name":"Budget","type":"numeric"},{"id":"Status","name":"Status","type":"character"},{"id":"CustomerID","name":"CustomerID","type":"numeric"}],"dataKey":"22b3c2f9bb34a2fbc8b40411b74c5a8c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -449,66 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="table">Table</h2>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: right;">Budget</th>
-<th style="text-align: right;">Success</th>
-<th style="text-align: right;">TeamSize</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">101</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">103</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">105</td>
-<td style="text-align: right;">300000</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">350000</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">107</td>
-<td style="text-align: right;">400000</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">450000</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-07707adfd519df32d6d7" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-07707adfd519df32d6d7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ProjectID":[101,102,103,104,105,106,107,108],"Budget":[100000,200000,150000,250000,300000,350000,400000,450000],"Success":[1,1,1,1,0,0,0,0],"TeamSize":[7,9,7,8,1,1,1,1]},"columns":[{"id":"ProjectID","name":"ProjectID","type":"numeric"},{"id":"Budget","name":"Budget","type":"numeric"},{"id":"Success","name":"Success","type":"numeric"},{"id":"TeamSize","name":"TeamSize","type":"numeric"}],"dataKey":"95c09ebc95d1e49c545882225b4d8461"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="linear-regression-model" class="level3">
@@ -537,23 +303,8 @@ F-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05</code></pre>
 </div>
 </div>
 </section>
-<section id="scatter-plot-success-vs.-budget" class="level3">
-<h3 class="anchored" data-anchor-id="scatter-plot-success-vs.-budget">Scatter Plot: Success vs.&nbsp;Budget</h3>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="scatter-plot-success-vs.-team-size" class="level3">
-<h3 class="anchored" data-anchor-id="scatter-plot-success-vs.-team-size">Scatter Plot: Success vs.&nbsp;Team Size</h3>
+<section id="success-vs.-budget" class="level3">
+<h3 class="anchored" data-anchor-id="success-vs.-budget">Success vs.&nbsp;Budget</h3>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
@@ -567,12 +318,36 @@ F-statistic: 149.3 on 2 and 5 DF,  p-value: 3.479e-05</code></pre>
 </div>
 </div>
 </section>
+<section id="success-vs.-team-size" class="level3">
+<h3 class="anchored" data-anchor-id="success-vs.-team-size">Success vs.&nbsp;Team Size</h3>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="interpret" class="level2">
-<h2 class="anchored" data-anchor-id="interpret">Interpret</h2>
 </section>
-<section id="discuss" class="level2">
-<h2 class="anchored" data-anchor-id="discuss">Discuss</h2>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<ul>
+<li><p><strong>Budget vs.&nbsp;Success</strong></p></li>
+<li><p>The coefficient for <strong><code>Budget</code></strong> is approximately -8.64e-07 with a p-value of 0.105437. This coefficient suggests a negative relationship between the budget and the success rate of a project. However, the p-value is greater than 0.05, which indicates that this relationship is not statistically significant.</p></li>
+<li><p><strong>Plot</strong>: The negative slope seen in the plot reflects the negative coefficient of the budget in the model. However, given the lack of statistical significance, this trend should be interpreted cautiously. It suggests that higher budgets might not necessarily lead to higher success rates, but the evidence isn’t strong enough to firmly conclude that higher budgets negatively impact success.</p></li>
+<li><p><strong>Team Size vs.&nbsp;Success</strong></p></li>
+<li><p>The coefficient for <strong><code>TeamSize</code></strong> is 0.1201 with a p-value of 0.000438, which is highly significant. This indicates a clear positive relationship between team size and success rate. The P-value is lower than .05 which suggest there is statistical significance to this result.</p></li>
+<li><p><strong>Plot</strong>: The positive slope aligns with the significant positive coefficient for team size. This visualization reinforces the model’s finding: larger teams are associated with higher success rates in projects. The strength of this relationship is underscored by both the steepness of the slope in the plot and the statistical significance in the model results.</p></li>
+</ul>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>Overall we can gather some insight from the linear regression model and the plots, but it is important to consider that the source of data is quite limited. There is also relevance in understanding whether the measure of success, completion or not completion of a project is valid. The data is not only limited to a 0 or a 1 in this exercise so we cannot fully consider it as linearly related to the outcome, but also the is reason to doubt that there might be no correlation between budget and teamsize and our measure of success.</p>
 </section>
 </section>
 <section id="disconnect-from-the-database" class="level1">
