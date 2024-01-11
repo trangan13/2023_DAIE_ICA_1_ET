@@ -7,7 +7,12 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: technologyexploration.qmd
+        text: Technology Exploration
+      - href: about.qmd
+        text: References
+      - href: Projectconclusions.qmd
+        text: Project Conclusions
 
 format:
   html:

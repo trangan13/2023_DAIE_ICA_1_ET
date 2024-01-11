@@ -1,3 +1,0 @@
----
-title: "Part: B - Linear Regression"
----

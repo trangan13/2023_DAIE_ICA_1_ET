@@ -95,7 +95,7 @@
     "href": "index.html#discussion",
     "title": "Part A: Introduction",
     "section": "Discussion",
-    "text": "Discussion\nOverall we can gather some insight from the linear regression model and the plots, but it is important to consider that the source of data is quite limited. There is also relevance in understanding whether the measure of success, completion or not completion of a project is valid. The data is not only limited to a 0 or a 1 in this exercise so we cannot fully consider it as linearly related to the outcome, but also the is reason to doubt that there might be no correlation between budget and teamsize and our measure of success."
+    "text": "Discussion\nOverall we can gather some insight from the linear regression model and the plots, in order to determine how budget and teamsize influences success in a project, but it is important to consider that the source of data is quite limited. There is also a lot to say about the measure of success selected to run the model. From the data provided I could only opt to determine success through the completion or not completion of a project, but I am uncertain that can be considered a valid data point for linear regression. The data is limited to a 0 or a 1 in this exercise, so we cannot fully consider it linearly related to the outcome."
   },
   {
     "objectID": "technologyexploration.html",
