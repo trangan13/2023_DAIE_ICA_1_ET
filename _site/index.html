@@ -134,12 +134,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./technologyexploration.html"> 
+<span class="menu-text">Technology Exploration</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">References</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./technologyexploration.html"> 
-<span class="menu-text">Technology Exploration</span></a>
+    <a class="nav-link" href="./Projectconclusions.html"> 
+<span class="menu-text">Project Conclusions</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -196,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="part-a-introduction" class="level1">
 <h1>Part A: Introduction</h1>
-<p>In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables which has helped in understanding their relationship to begin crafting the queries.</p>
+<p>In the first part of the assestment, we will write basic SQL queries to extract meaningful insights from a database related to game development projects. To start with this process, I have gained some general context by viewing the tables using sqliteviewer.app, which has helped in understanding their relationship to begin crafting the queries.</p>
 </section>
 <section id="core-queries" class="level1">
 <h1>Core Queries</h1>
@@ -204,8 +208,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="query-1-total-budget-and-project-count-per-country">Query 1: Total Budget and Project Count per Country</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-d22928c36265b953ac12" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d22928c36265b953ac12">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"CustomerCountry":["Spain","UK","Netherlands","Italy","France","Germany"],"TotalBudget":[650000,550000,400000,250000,200000,150000],"ProjectCount":[2,2,1,1,1,1]},"columns":[{"id":"CustomerCountry","name":"CustomerCountry","type":"character"},{"id":"TotalBudget","name":"TotalBudget","type":"numeric"},{"id":"ProjectCount","name":"ProjectCount","type":"numeric"}],"dataKey":"3300a354e73843133130bd749e096c34"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-dee88d229ee9fea99636" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-dee88d229ee9fea99636">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"CustomerCountry":["Spain","UK","Netherlands","Italy","France","Germany"],"TotalBudget":[650000,550000,400000,250000,200000,150000],"ProjectCount":[2,2,1,1,1,1]},"columns":[{"id":"CustomerCountry","name":"CustomerCountry","type":"character"},{"id":"TotalBudget","name":"TotalBudget","type":"numeric"},{"id":"ProjectCount","name":"ProjectCount","type":"numeric"}],"dataKey":"3300a354e73843133130bd749e096c34"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="map-visualization-of-query-1" class="level3">
@@ -225,8 +229,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="query-2-average-project-development-time-by-number-of-assets">Query 2: Average project development time by number of assets</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-96194033a2c2b66597ab" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-96194033a2c2b66597ab">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"NumberOfAssets":[11,10],"AverageDevelopmentTime":[181.5,212.5]},"columns":[{"id":"NumberOfAssets","name":"NumberOfAssets","type":"numeric"},{"id":"AverageDevelopmentTime","name":"AverageDevelopmentTime","type":"numeric"}],"dataKey":"954a6ea91dadee2e76648f9f965745a7"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-9504e117e39a8389b91d" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9504e117e39a8389b91d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"NumberOfAssets":[11,10],"AverageDevelopmentTime":[181.5,212.5]},"columns":[{"id":"NumberOfAssets","name":"NumberOfAssets","type":"numeric"},{"id":"AverageDevelopmentTime","name":"AverageDevelopmentTime","type":"numeric"}],"dataKey":"954a6ea91dadee2e76648f9f965745a7"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -234,14 +238,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="query-3-top-three-developers-based-on-successful-project-count">Query 3: Top three developers based on successful project count</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-5cdac4bd696351acf195" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5cdac4bd696351acf195">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["Morgan Lee","Jordan Kim","Alice Johnson"],"SuccessfulProjects":[2,1,1]},"columns":[{"id":"Name","name":"Name","type":"character"},{"id":"SuccessfulProjects","name":"SuccessfulProjects","type":"numeric"}],"dataKey":"8544df765ee8df17fa777d3572bfd458"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-31351149d1390d615b77" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-31351149d1390d615b77">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["Morgan Lee","Jordan Kim","Alice Johnson"],"SuccessfulProjects":[2,1,1]},"columns":[{"id":"Name","name":"Name","type":"character"},{"id":"SuccessfulProjects","name":"SuccessfulProjects","type":"numeric"}],"dataKey":"8544df765ee8df17fa777d3572bfd458"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 </section>
-<section id="sql-concepts-demonstration" class="level1">
-<h1>SQL Concepts Demonstration</h1>
+<section id="sql-concept-demonstration" class="level1">
+<h1>SQL Concept Demonstration</h1>
 <section id="select-with-like-and-or" class="level3">
 <h3 class="anchored" data-anchor-id="select-with-like-and-or"><strong>1. SELECT with LIKE and OR:</strong></h3>
 </section>
@@ -249,8 +253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="find-developers-with-specialization-as-programmer-or-writer."><strong>Find developers with specialization as Programmer or Writer.</strong></h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-a86e69b503a624759dc3" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a86e69b503a624759dc3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"DeveloperID":[201,202,212],"Name":["Alice Johnson","Bob Smith","Luis Hernandez"],"Specialization":["Programmer","Programmer","Writer"],"ExperienceYears":[5,3,6]},"columns":[{"id":"DeveloperID","name":"DeveloperID","type":"numeric"},{"id":"Name","name":"Name","type":"character"},{"id":"Specialization","name":"Specialization","type":"character"},{"id":"ExperienceYears","name":"ExperienceYears","type":"numeric"}],"dataKey":"e3f8c161b495e667f4ffffe8702bdea9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-3d9155799080e5b41a2a" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3d9155799080e5b41a2a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"DeveloperID":[201,202,212],"Name":["Alice Johnson","Bob Smith","Luis Hernandez"],"Specialization":["Programmer","Programmer","Writer"],"ExperienceYears":[5,3,6]},"columns":[{"id":"DeveloperID","name":"DeveloperID","type":"numeric"},{"id":"Name","name":"Name","type":"character"},{"id":"Specialization","name":"Specialization","type":"character"},{"id":"ExperienceYears","name":"ExperienceYears","type":"numeric"}],"dataKey":"e3f8c161b495e667f4ffffe8702bdea9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -261,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="list-of-distinct-asset-types-ordered-alphabetically."><strong>List of distinct asset types ordered alphabetically.</strong></h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-c165ffbb57a4a10f5333" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c165ffbb57a4a10f5333">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Type":["3D Model","Animation","Character Model","Cinematic","Environment Design","Gameplay Script","Level Design","Sound","Texture","UI Element"]},"columns":[{"id":"Type","name":"Type","type":"character"}],"dataKey":"a02e0f0836d45c36ec1d9de46ad34de6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-8c59dc491f59d31a167e" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8c59dc491f59d31a167e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Type":["3D Model","Animation","Character Model","Cinematic","Environment Design","Gameplay Script","Level Design","Sound","Texture","UI Element"]},"columns":[{"id":"Type","name":"Type","type":"character"}],"dataKey":"a02e0f0836d45c36ec1d9de46ad34de6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -273,8 +277,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="filter-projects-with-above-average-budgets"><strong>Filter projects with above average budgets</strong></h3>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-9ace75a107c2755b3017" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-9ace75a107c2755b3017">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ProjectID":[105,106,107,108],"ProjectName":["Ocean Odyssey","Desert Survival","Frozen Frontier","Cybernetic Dreams"],"StartDate":["2023-03-01","2024-07-01","2025-01-01","2025-07-01"],"EndDate":["2024-06-30","2024-12-31","2025-06-30","2025-12-31"],"Budget":[300000,350000,400000,450000],"Status":["In Progress","Planned","Planned","Planned"],"CustomerID":[5,6,7,8]},"columns":[{"id":"ProjectID","name":"ProjectID","type":"numeric"},{"id":"ProjectName","name":"ProjectName","type":"character"},{"id":"StartDate","name":"StartDate","type":"character"},{"id":"EndDate","name":"EndDate","type":"character"},{"id":"Budget","name":"Budget","type":"numeric"},{"id":"Status","name":"Status","type":"character"},{"id":"CustomerID","name":"CustomerID","type":"numeric"}],"dataKey":"22b3c2f9bb34a2fbc8b40411b74c5a8c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-540035a9e3b261537fbf" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-540035a9e3b261537fbf">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ProjectID":[105,106,107,108],"ProjectName":["Ocean Odyssey","Desert Survival","Frozen Frontier","Cybernetic Dreams"],"StartDate":["2023-03-01","2024-07-01","2025-01-01","2025-07-01"],"EndDate":["2024-06-30","2024-12-31","2025-06-30","2025-12-31"],"Budget":[300000,350000,400000,450000],"Status":["In Progress","Planned","Planned","Planned"],"CustomerID":[5,6,7,8]},"columns":[{"id":"ProjectID","name":"ProjectID","type":"numeric"},{"id":"ProjectName","name":"ProjectName","type":"character"},{"id":"StartDate","name":"StartDate","type":"character"},{"id":"EndDate","name":"EndDate","type":"character"},{"id":"Budget","name":"Budget","type":"numeric"},{"id":"Status","name":"Status","type":"character"},{"id":"CustomerID","name":"CustomerID","type":"numeric"}],"dataKey":"22b3c2f9bb34a2fbc8b40411b74c5a8c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -286,8 +290,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="table">Table</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-fbe1924eff4399a8d01a" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-fbe1924eff4399a8d01a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ProjectID":[101,102,103,104,105,106,107,108],"Budget":[100000,200000,150000,250000,300000,350000,400000,450000],"Success":[1,1,1,1,0,0,0,0],"TeamSize":[7,9,7,8,1,1,1,1]},"columns":[{"id":"ProjectID","name":"ProjectID","type":"numeric"},{"id":"Budget","name":"Budget","type":"numeric"},{"id":"Success","name":"Success","type":"numeric"},{"id":"TeamSize","name":"TeamSize","type":"numeric"}],"dataKey":"95c09ebc95d1e49c545882225b4d8461"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-80cc0a9c90dd498c90fa" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-80cc0a9c90dd498c90fa">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ProjectID":[101,102,103,104,105,106,107,108],"Budget":[100000,200000,150000,250000,300000,350000,400000,450000],"Success":[1,1,1,1,0,0,0,0],"TeamSize":[7,9,7,8,1,1,1,1]},"columns":[{"id":"ProjectID","name":"ProjectID","type":"numeric"},{"id":"Budget","name":"Budget","type":"numeric"},{"id":"Success","name":"Success","type":"numeric"},{"id":"TeamSize","name":"TeamSize","type":"numeric"}],"dataKey":"95c09ebc95d1e49c545882225b4d8461"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section id="linear-regression-model" class="level3">

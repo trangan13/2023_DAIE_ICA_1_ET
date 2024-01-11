@@ -1,3 +1,13 @@
 ---
-title: "Project Conclusions""
+title: "Project Conclusions"
 ---
+
+As this data project comes to a close, I find myself reflecting on the challenges and learning. Delving into SQL querying for the first time was a testing task. Grasping the language and logic in order to formulate the queries was the main part of this learning experience. The process was laborious, time consuming and sometimes frustrating, but ultimately it was rewarding and it is something I would like to continue learning.
+
+Linear regression was also a concept a found interesting to explore. Understanding the relationship between variables and how they impact outcomes was particularly useful, I would have also enjoyed practicing with data that provided a bit more play to discover real insight, but the exercise was good.
+
+I have opted to not complete Part C of the assesstment. Although I have no doubt learning about Shiny Applications is incredibly valuable, I have found the challenge of completing this part of the project to be satisfying enough and I am ready to conclude the focus on this topic for now. I do really appreacciate the detailed guidelines and videos made to guide us and hope to learn this sometime in the future.
+
+The application of these skills in the world of game development and computer animation is exciting. SQL querying and data analysis has shown me how this powerful tools are accessible to me and how important they are to make truly educated decisions.
+
+Overall, working with R has been a fun and enriching experience. The tools and methodologies I've learned have have sparked a keen interest in further exploring their application in game development and computer animation. The journey through this project, though arduous, has been a stepping stone in my continuous learning path in data analytics, one that I am sure I will continue.

@@ -2,17 +2,17 @@ project:
   type: website
 
 website:
-  title: "CA2_SQL_LinearRegression"
+  title: "2023_DAIE_ICA_1_ET"
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: SQL and Linear Regression
       - href: technologyexploration.qmd
         text: Technology Exploration
-      - href: about.qmd
-        text: References
       - href: Projectconclusions.qmd
         text: Project Conclusions
+      - href: about.qmd
+        text: References
 
 format:
   html:
